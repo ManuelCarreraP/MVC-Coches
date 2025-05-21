@@ -1,15 +1,26 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * Clase que maneja la interacción con el usuario (patrón MVC).
+ */
 public class View {
-    static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in); // Scanner para entrada de usuario.
 
-    // Muestra la velocidad de un coche
+    /**
+     * Muestra la velocidad actual de un coche.
+     * @param matricula Matrícula del coche.
+     * @param v Velocidad en km/h.
+     */
     public static void muestraVelocidad(String matricula, Integer v) {
         System.out.println(matricula + ": " + v + " km/h");
     }
 
-    // Muestra todos los coches
+    /**
+     * Muestra la lista de coches en el parking.
+     * @param coches Lista de coches a mostrar.
+     * Si la lista está vacía, muestra un mensaje indicándolo.
+     */
     public static void mostrarCoches(ArrayList<Coche> coches) {
         if (coches.isEmpty()) {
             System.out.println("No hay coches en el parking.");
@@ -23,18 +34,31 @@ public class View {
         }
     }
 
-    // Muestra un mensaje al usuario
+    /**
+     * Muestra un mensaje al usuario.
+     * @param mensaje Mensaje a mostrar.
+     */
     public static void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
     }
 
-    // Pide un dato al usuario
+    /**
+     * Solicita un dato al usuario.
+     * @param mensaje Mensaje que se muestra al solicitar el dato.
+     * @return El dato introducido por el usuario.
+     */
     public static String pedirDato(String mensaje) {
         System.out.print(mensaje);
         return sc.nextLine();
     }
 
-    // Menú principal de la aplicación
+    /**
+     * Menú principal de la aplicación con opciones para gestionar coches.
+     * - Opción 1: Crear un coche.
+     * - Opción 2: Cambiar velocidad de un coche.
+     * - Opción 3: Mostrar todos los coches.
+     * - Opción 0: Salir del programa.
+     */
     public static void menu() {
         while (true) {
             System.out.println("-----MENU-----");
@@ -47,14 +71,12 @@ public class View {
 
             switch (input) {
                 case "1":
-                    // Solicita datos y llama al Controller para crear un coche
                     String modelo = pedirDato("Introduce el modelo: ");
                     String matricula = pedirDato("Introduce la matrícula: ");
                     Controller.crearCoche(modelo, matricula);
                     mostrarMensaje("Coche creado correctamente.");
                     break;
                 case "2":
-                    // Solicita datos y llama al Controller para cambiar la velocidad
                     matricula = pedirDato("Introduce la matrícula del coche: ");
                     String velocidadInput = pedirDato("Introduce la nueva velocidad: ");
                     try {

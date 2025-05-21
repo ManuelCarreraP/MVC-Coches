@@ -69,3 +69,54 @@ sequenceDiagram
     View-->>Controller: boolean
     deactivate View
 ```
+
+Diagrama con los metodos y funciones de mi programa
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant View
+    participant Controller
+    participant Model
+
+    App->>View: menu()
+    activate View
+
+    %% Flujo creación de coche (Opción 1)
+    View->>Controller: crearCoche("Modelo", "Matrícula")
+    activate Controller
+    Controller->>Model: crearCoche("Modelo", "Matrícula")
+    activate Model
+    Model-->>Controller: Coche
+    deactivate Model
+    Controller-->>View: "Coche creado correctamente"
+    deactivate Controller
+
+    %% Flujo cambio de velocidad (Opción 2)
+    View->>Controller: cambiarVelocidad("Matrícula", 120)
+    activate Controller
+    Controller->>Model: cambiarVelocidad("Matrícula", 120)
+    activate Model
+    Model-->>Controller: 120
+    deactivate Model
+    Controller->>View: muestraVelocidad("Matrícula", 120)
+    activate View
+    View->>View: System.out.println("Matrícula: 120 km/h")
+    deactivate View
+    deactivate Controller
+
+    %% Flujo mostrar coches (Opción 3)
+    View->>Controller: obtenerCoches()
+    activate Controller
+    Controller->>Model: obtenerCoches()
+    activate Model
+    Model-->>Controller: ArrayList<Coche>
+    deactivate Model
+    Controller->>View: mostrarCoches(ArrayList<Coche>)
+    activate View
+    View->>View: System.out.println("Matrícula: X | Modelo: Y | Velocidad: Z")
+    deactivate View
+    deactivate Controller
+
+    deactivate View
+```
