@@ -9,4 +9,5 @@ public class App {
     public static void main(String[] args) {
         View.menu(); // Inicia el menú principal de la aplicación.
     }
+
 }
