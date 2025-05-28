@@ -1,3 +1,33 @@
+# Examen:
+### 1. Nuevo Atributo: Gasolina
+Añadido gasolina a la clase Coche para controlar el combustible.
+
+Todos los coches nuevos empiezan con 0 litros.
+
+### 2. Funcionalidades Nuevas
+ Opción 4: Avanzar
+Qué hace: Mueve el coche una distancia en metros.
+
+Consumo: Gasta gasolina según la fórmula:
+
+consumo = (metros * velocidad) / 1000  
+Ejemplo:
+
+Si avanzas 5000m a 60km/h → gasta 3 litros.
+
+ Opción 5: Poner Gasolina
+Qué hace: Añade combustible al depósito.
+
+Importante: Solo acepta números positivos.
+
+3. Menú Actualizado
+1. Crear coche  
+2. Cambiar velocidad  
+3. Mostrar coches  
+4. Avanzar  
+5. Poner gasolina  
+0. Salir  
+
 # Arquitectura MVC
 
 Aplicación que trabaja con objetos coches, modifica la velocidad y la muestra
