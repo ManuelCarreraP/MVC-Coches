@@ -57,6 +57,8 @@ public class View {
      * - Opción 1: Crear un coche.
      * - Opción 2: Cambiar velocidad de un coche.
      * - Opción 3: Mostrar todos los coches.
+     * - Opción 4: Avanzar x metros.
+     * - Opción 5: Poner gasolina.
      * - Opción 0: Salir del programa.
      */
     public static void menu() {
@@ -65,6 +67,8 @@ public class View {
             System.out.println("1- Crear coche");
             System.out.println("2- Cambiar velocidad");
             System.out.println("3- Mostrar todos los coches");
+            System.out.println("4- Avanzar (metros)");
+            System.out.println("5- Poner gasolina");
             System.out.println("0 - Salir");
 
             String input = sc.nextLine();
@@ -93,6 +97,35 @@ public class View {
                     break;
                 case "3":
                     mostrarCoches(Controller.obtenerCoches());
+                    break;
+                case "4":
+                    matricula = pedirDato("Introduce la matrícula: ");
+                    String metrosInput = pedirDato("Metros a avanzar: ");
+                    try {
+                        int metros = Integer.parseInt(metrosInput);
+                        if (Controller.avanzar(matricula, metros)) {
+                            mostrarMensaje("Avance realizado.");
+                        } else {
+                            mostrarMensaje("Error: sin gasolina o coche no encontrado.");
+                        }
+                    } catch (NumberFormatException e) {
+                        mostrarMensaje("Valor inválido.");
+                    }
+                    break;
+
+                case "5":
+                    matricula = pedirDato("Introduce la matrícula: ");
+                    String litrosInput = pedirDato("Litros a añadir: ");
+                    try {
+                        double litros = Double.parseDouble(litrosInput);
+                        if (Controller.ponerGasolina(matricula, litros)) {
+                            mostrarMensaje("Gasolina añadida.");
+                        } else {
+                            mostrarMensaje("Error: coche no encontrado.");
+                        }
+                    } catch (NumberFormatException e) {
+                        mostrarMensaje("Valor inválido.");
+                    }
                     break;
                 case "0":
                     return;

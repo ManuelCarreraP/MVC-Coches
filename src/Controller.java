@@ -32,4 +32,21 @@ public class Controller {
     public static ArrayList<Coche> obtenerCoches() {
         return Model.obtenerCoches();
     }
+
+    /*
+     * Avanza un coche en un determinado número de metros.
+     * @return true si el coche puede avanzar, false si no se encuentra.
+     */
+    public static boolean avanzar(String matricula, int metros) {
+        return Model.avanzar(matricula, metros);
+    }
+
+    /*
+     * Pone gasolina a un coche.
+     * @return true si el coche existe, false si no se encuentra.
+     */
+
+    public static boolean ponerGasolina(String matricula, double litros) {
+        return Model.ponerGasolina(matricula, litros);
+    }
 }

@@ -54,4 +54,37 @@ public class Model {
     public static ArrayList<Coche> obtenerCoches() {
         return parking;
     }
+
+    /*
+     * Avanza un coche en el parking.
+     * @param matricula Matrícula del coche.
+     * @param metros Distancia en metros.
+     * @return true si el coche puede avanzar, false si no
+     */
+    public static boolean avanzar(String matricula, int metros) {
+        Coche coche = getCoche(matricula);
+        if (coche == null) return false;
+
+        double consumo = (metros * coche.velocidad) / 1000.0;  // Fórmula de consumo
+        if (coche.gasolina >= consumo) {
+            coche.gasolina -= consumo;
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * Pone gasolina a un coche.
+     * @param matricula Matrícula del coche.
+     * @param litros Cantidad de litros.
+     * @return true si el coche puede poner gasolina, false si no
+     */
+    public static boolean ponerGasolina(String matricula, double litros) {
+        Coche coche = getCoche(matricula);
+        if (coche == null) return false;
+
+        coche.gasolina += litros;
+        return true;
+    }
+
 }

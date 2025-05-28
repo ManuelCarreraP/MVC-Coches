@@ -2,6 +2,7 @@
  * Clase que representa un coche con modelo, matrícula y velocidad.
  */
 public class Coche {
+    public int gasolina; // Litros de gasolina.
     String matricula;    // Matrícula del coche.
     String modelo;       // Modelo del coche.
     Integer velocidad;   // Velocidad actual del coche (km/h).
@@ -16,5 +17,6 @@ public class Coche {
         this.modelo = modelo;
         this.matricula = matricula;
         this.velocidad = 0;
+        this.gasolina = 0;
     }
 }
