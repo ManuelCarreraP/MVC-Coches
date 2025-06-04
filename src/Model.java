@@ -5,6 +5,7 @@ import java.util.ArrayList;
  */
 public class Model {
     public static ArrayList<Coche> parking = new ArrayList<>(); // Almacén de coches.
+    private static AlarmaGasolinaBaja alarma = new AlarmaGasolinaBaja();
 
     /**
      * Crea un coche y lo añade al parking.
@@ -14,6 +15,7 @@ public class Model {
      */
     public static Coche crearCoche(String modelo, String matricula) {
         Coche aux = new Coche(modelo, matricula);
+        aux.añadirObservador(alarma); // Registramos la alarma
         parking.add(aux);
         return aux;
     }
@@ -55,25 +57,25 @@ public class Model {
         return parking;
     }
 
-    /*
+    /**
      * Avanza un coche en el parking.
      * @param matricula Matrícula del coche.
-     * @param metros Distancia en metros.
+     * @param kilometros Distancia en kilometros.
      * @return true si el coche puede avanzar, false si no
      */
-    public static boolean avanzar(String matricula, int metros) {
+    public static boolean avanzar(String matricula, int kilometros) {
         Coche coche = getCoche(matricula);
         if (coche == null) return false;
 
-        double consumo = (metros * coche.velocidad) / 1000.0;  // Fórmula de consumo
+        double consumo = (kilometros * coche.velocidad) / 1000.0;  // Fórmula de consumo
         if (coche.gasolina >= consumo) {
-            coche.gasolina -= consumo;
+            coche.setGasolina((int)(coche.gasolina - consumo)); // Usamos setGasolina
             return true;
         }
         return false;
     }
 
-    /*
+    /**
      * Pone gasolina a un coche.
      * @param matricula Matrícula del coche.
      * @param litros Cantidad de litros.
@@ -83,8 +85,7 @@ public class Model {
         Coche coche = getCoche(matricula);
         if (coche == null) return false;
 
-        coche.gasolina += litros;
+        coche.setGasolina((int)(coche.gasolina + litros)); // Usamos setGasolina
         return true;
     }
-
 }

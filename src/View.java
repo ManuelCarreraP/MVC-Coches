@@ -29,7 +29,8 @@ public class View {
             for (Coche coche : coches) {
                 System.out.println("Matrícula: " + coche.matricula +
                         " | Modelo: " + coche.modelo +
-                        " | Velocidad: " + coche.velocidad + " km/h");
+                        " | Velocidad: " + coche.velocidad + " km/h" +
+                        " | Gasolina: " + coche.gasolina + " litros");
             }
         }
     }
@@ -57,7 +58,7 @@ public class View {
      * - Opción 1: Crear un coche.
      * - Opción 2: Cambiar velocidad de un coche.
      * - Opción 3: Mostrar todos los coches.
-     * - Opción 4: Avanzar x metros.
+     * - Opción 4: Avanzar x Kilometros.
      * - Opción 5: Poner gasolina.
      * - Opción 0: Salir del programa.
      */
@@ -67,7 +68,7 @@ public class View {
             System.out.println("1- Crear coche");
             System.out.println("2- Cambiar velocidad");
             System.out.println("3- Mostrar todos los coches");
-            System.out.println("4- Avanzar (metros)");
+            System.out.println("4- Avanzar (Kilometros)");
             System.out.println("5- Poner gasolina");
             System.out.println("0 - Salir");
 
@@ -100,10 +101,10 @@ public class View {
                     break;
                 case "4":
                     matricula = pedirDato("Introduce la matrícula: ");
-                    String metrosInput = pedirDato("Metros a avanzar: ");
+                    String kilometrosInput = pedirDato("Kilometros a avanzar: ");
                     try {
-                        int metros = Integer.parseInt(metrosInput);
-                        if (Controller.avanzar(matricula, metros)) {
+                        int Kilometros = Integer.parseInt(kilometrosInput);
+                        if (Controller.avanzar(matricula, Kilometros)) {
                             mostrarMensaje("Avance realizado.");
                         } else {
                             mostrarMensaje("Error: sin gasolina o coche no encontrado.");
@@ -112,7 +113,6 @@ public class View {
                         mostrarMensaje("Valor inválido.");
                     }
                     break;
-
                 case "5":
                     matricula = pedirDato("Introduce la matrícula: ");
                     String litrosInput = pedirDato("Litros a añadir: ");
