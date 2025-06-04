@@ -41,8 +41,11 @@ sequenceDiagram
     View-->>Usuario: Muestra resultado
 ```
 ## Comprobación:
-![Comprobacion 1](../1.png)
-![Comprobacion 2](../2.png)
+### Primero creamos un nuevo coche como ejemplo y le añadimos 50L de gasolina
+![Comprobacion 1](./1.png)
+### Le Pedimos que avance 450km, y teniendo en cuenta que va a 100km/h y tiene un consumo de 10L cada 100km salta la alarma
+![Comprobacion 2](./2.png)
+
 ---
 ---
 # Examen 1: MVC
